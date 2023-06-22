@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscripción exitosa</title>
+</head>
+<body>
+
+<div layout:fragment="contenido_personalizado" class="container section">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="p-5 text-center">
+                <i class="fa fa-check-circle h1"></i>
+                <h1 class="text-center display-5">Gracias por inscribirte</h1>
+
+                <p class="mt-4 text-white fs-4 mb-5">
+                    Enhorabuena!
+                    Recuerda estar al tanto de las indicaciones del instructor
+                    para empezar el curso.
+                </p>
+
+                <div class="mt-5r">
+                    <a href="/cursos" class="btn btn-outline-primary btn-lg">
+                        Seguir comprando
+                    </a>
+
+                    <a href="/mis-cursos" class="btn btn-secondary btn-lg ms-2">
+                        Ver mis cursos
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

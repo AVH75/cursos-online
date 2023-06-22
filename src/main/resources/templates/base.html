@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>CursosOnline</title>
+
+    <link rel="stylesheet" th:href="@{/bootstrap/bootstrap-custom.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="min-h-100vh">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">CursosOnline</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cursos">Cursos</a>
+                </li>
+
+                <div sec:authorize="hasRole('ADMIN')" th:remove="tag">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/cursos">Admin. cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/usuarios">Admin. usuarios</a>
+                    </li>
+                </div>
+            </ul>
+
+            <div sec:authorize="!isAuthenticated()">
+                <a href="/login" class="btn btn-outline-primary">
+                    Iniciar sesión
+                </a>
+                <a href="/registro" class="btn btn-primary ms-2">
+                    Regístrate
+                </a>
+            </div>
+            <div class="dropdown auth" sec:authorize="isAuthenticated()">
+                <a href="javascript:void(0)"
+                   sec:authentication="principal.nombre"
+                   class="btn btn-dark dropdown-toggle"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/logout" class="dropdown-item">Cerrar sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div layout:fragment="contenido_personalizado">
+    Acá va el contenido personalizado de las plantillas que usan esta base.
+</div>
+
+
+<script th:src="@{/bootstrap/bootstrap.bundle.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div layout:fragment="scripts" th:remove="tag"></div>
+
+</body>
+</html>

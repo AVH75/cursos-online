@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+
+<div layout:fragment="contenido_personalizado">
+    <div class="banner">
+        <video th:src="@{/video/banner.mp4}" muted autoplay loop></video>
+
+        <div class="overlay"></div>
+        <div class="container">
+            <h1 class="display-2 text-light">CursosOnline</h1>
+            <p class="fs-5 text-white">
+                Entrénate en cursos de tecnología y no dejes de aprender.
+            </p>
+        </div>
+    </div>
+
+    <div class="container section">
+        <h3 class="text-light mb-3">Últimos cursos publicados</h3>
+
+        <div class="row">
+            <div class="col-md-4 col-lg-3 mb-5" th:each="curso : ${ultimosCursos}" th:object="${curso}">
+
+                <div class="card">
+                    <img th:src="@{/media/{ri}(ri=*{rutaImagen})}" class="card-img-top rounded" th:alt="*{titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">[[*{titulo}]]</h5>
+
+                        <div class="card-text">
+                            <div>
+                                Inicia [[*{#temporals.format(fechaInicio, 'dd ''de'' MMMM')}]]
+                            </div>
+                            <div class="my-3 text-danger fw-bold">
+                                $[[*{#numbers.formatDecimal(precio, 1, 'COMMA', 2, 'POINT')}]]
+                            </div>
+                        </div>
+
+                        <a th:href="@{/cursos/{id}(id=*{id})}" class="btn btn-primary w-100">
+                            Ver detalles
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

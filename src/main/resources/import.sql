@@ -1,0 +1,1 @@
+insert into usuario(nombres, apellidos, nom_completo, email, password, rol, fecha_creacion) values('Darwin', 'Galindo', 'Darwin Galindo', 'darwin@gmail.com', '$2a$10$wVYIsgEoKoxjHbluM8DPIODt3SjaG2fLyvqcLZ9Xdn2o1mbqu6/0O', 'ADMIN', '2022-03-30 10:10:00');

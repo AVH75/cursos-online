@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de usuario</title>
+</head>
+<body>
+
+<div layout:fragment="contenido_personalizado" class="container section">
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-5 col-xl-4">
+            <h3>Registro de usuario</h3>
+
+            <form th:action="@{''}" method="post" th:object="${registroUsuarioForm}" class="mt-5" novalidate>
+
+                <div th:if="${#fields.hasErrors('global')}" class="alert alert-danger my-3">
+                    <div>Ha sucedido los siguientes errores:</div>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('global')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <label for="nombres">Nombres</label>
+                    <input id="nombres"
+                           type="text"
+                           class="form-control"
+                           th:field="*{nombres}"
+                           th:errorclass="is-invalid"
+                           placeholder="Nombres">
+
+                    <div class="invalid-feedback" th:errors="*{nombres}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos"
+                           type="text"
+                           class="form-control"
+                           th:field="*{apellidos}"
+                           th:errorclass="is-invalid"
+                           placeholder="Apellidos">
+
+                    <div class="invalid-feedback" th:errors="*{apellidos}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input id="email"
+                           type="email"
+                           class="form-control"
+                           th:field="*{email}"
+                           th:errorclass="is-invalid"
+                           placeholder="Email">
+
+                    <div class="invalid-feedback" th:errors="*{email}"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password1">Contraseña</label>
+                    <input id="password1"
+                           type="password"
+                           class="form-control"
+                           th:field="*{password1}"
+                           th:errorclass="is-invalid"
+                           placeholder="Contraseña">
+
+                    <div class="invalid-feedback" th:errors="*{password1}"></div>
+                </div>
+
+                <div class="mb-5">
+                    <label for="password2">Repita la contraseña</label>
+                    <input id="password2"
+                           type="password"
+                           class="form-control"
+                           th:field="*{password2}"
+                           th:errorclass="is-invalid"
+                           placeholder="Repita la contraseña">
+
+                    <div class="invalid-feedback" th:errors="*{password2}"></div>
+                </div>
+
+                <button class="btn btn-primary btn-lg w-100">
+                    Registrarme
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

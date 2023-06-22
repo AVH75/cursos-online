@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{base.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Página no encontrada</title>
+</head>
+<body>
+
+<div class="container section" layout:fragment="contenido_personalizado">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center text-white">
+                <div class="display-1">
+                    Página no encontrada
+                </div>
+
+                <p class="mt-5">
+                    La página o el recurso al cual estás intentando acceder no existe.
+                    Por favor asegúrate de ingresar a la ruta correcta.
+                    De otra forma comunícate con el Área de Sistemas.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
